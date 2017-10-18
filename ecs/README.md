@@ -24,7 +24,9 @@ aws ec2 authorize-security-group-ingress --group-id $GROUP_ID \
   FromPort=9990,IpProtocol=tcp,ToPort=9990,IpRanges=[{CidrIp="0.0.0.0/0"}] \
   FromPort=3000,IpProtocol=tcp,ToPort=3000,IpRanges=[{CidrIp="0.0.0.0/0"}] \
   FromPort=8500,IpProtocol=tcp,ToPort=8500,IpRanges=[{CidrIp="0.0.0.0/0"}] \
-  IpProtocol=-1,UserIdGroupPairs=[{GroupId=$GROUP_ID}]
+  FromPort=0,IpProtocol=tcp,ToPort=65535,UserIdGroupPairs=[{GroupId=$GROUP_ID}] \
+  FromPort=0,IpProtocol=udp,ToPort=65535,UserIdGroupPairs=[{GroupId=$GROUP_ID}] \
+  IpProtocol=icmp,UserIdGroupPairs=[{GroupId=$GROUP_ID}]
 ```
 
 ## `consul-server`
